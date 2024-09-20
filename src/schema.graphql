@@ -1,0 +1,71 @@
+type Categoria {
+    id: Int!
+    nome: String!
+}
+
+type Fornecedor {
+    id: Int!
+    nome: String!
+    email: String!
+    contato: String!
+    endereco: String!
+}
+
+type Produto {
+    id: Int!
+    nome: String!
+    preco: Float!
+    quantidade: Float!
+}
+
+type Venda {
+    id: Int!
+    nomeDoProduto: String!
+    quantidade: Int!
+    data: String!
+}
+
+type HistoricoProduto {
+    id: Int!
+    nomeProduto: String!
+    precoAntigo: Float!
+    precoNovo: Float!
+    quantidadeAntiga: Int!
+    quantidadeNova: Int!
+    data: String!
+}
+
+type Query {
+    categorias: [Categoria!]!
+    fornecedores: [Fornecedor!]!
+    produtos: [Produto!]!
+    vendas: [Venda!]!
+    historicoProdutos: [HistoricoProduto!]!
+
+    categoria(id: Int!): Categoria
+    fornecedor(id: Int!): Fornecedor
+    produto(id: Int!): Produto
+    venda(id: Int!): Venda
+    historicoProduto(id: Int!): HistoricoProduto
+}
+
+type Mutation {
+    criarCategoria(nome: String!): Categoria!
+    atualizarCategoria(id: Int!, nome: String!): Categoria!
+    deletarCategoria(id: Int!): Categoria!
+
+    criarFornecedor(nome: String!, email: String!, contato: String!, endereco: String!): Fornecedor!
+    atualizarFornecedor(id: Int!, nome: String!, email: String!, contato: String!, endereco: String!): Fornecedor!
+    deletarFornecedor(id: Int!): Fornecedor!
+
+    criarProduto(nome: String!, preco: Float!, quantidade: Float!): Produto!
+    atualizarProduto(id: Int!, nome: String!, preco: Float!, quantidade: Float!): Produto!
+    deletarProduto(id: Int!): Produto!
+
+    novaVenda( nomeDoProduto: String!, quantidade: Int!, data: String!): Venda!
+    deletarVenda(id: Int!): Venda!
+
+    novoHistoricoProduto(nomeProduto: String!, precoAntigo: Float!, precoNovo: Float!, quantidadeAntiga: Int!, quantidadeNova: Int!, data: String!): HistoricoProduto!
+    atualizarHistoricoProduto( id: Int!, nomeProduto: String!, precoAntigo: Float!, precoNovo: Float!, quantidadeAntiga: Int!, quantidadeNova: Int!, data: String!): HistoricoProduto!
+    deletarHistoricoProduto(id: Int!): HistoricoProduto!
+}
